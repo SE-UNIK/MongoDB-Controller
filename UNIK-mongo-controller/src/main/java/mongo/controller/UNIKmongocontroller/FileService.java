@@ -16,8 +16,4 @@ public class FileService {
     public List<File> allFiles(){
         return repository.findAll(); //described inside the mongo repo class
     }
-
-    // public Optional<File> singleFile(ObjectId id){
-    // return repository.findById(id);
-    // }
 }
