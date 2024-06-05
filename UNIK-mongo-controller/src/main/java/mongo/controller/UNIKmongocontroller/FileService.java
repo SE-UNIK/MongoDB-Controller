@@ -16,4 +16,10 @@ public class FileService {
     public List<File> allFiles(){
         return repository.findAll(); //described inside the mongo repo class
     }
+
+    public File addFile(File file) {
+        return repository.save(file);
+    }
+
+
 }

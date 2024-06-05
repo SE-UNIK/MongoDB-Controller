@@ -3,9 +3,7 @@ package mongo.controller.UNIKmongocontroller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,10 +19,12 @@ public class FileController {
         return new ResponseEntity<List<File>>(service.allFiles(), HttpStatus.OK);
     } //ResponseEntity is a generic, we nend to pass what kind of data is being trasnfered
 
-    //@GetMapping("/{id}") //search file based on id
-    //public ResponseEntity<Optional<File>> getSingleFile(@PathVariable ObjectId id) {
-    //  return new ResponseEntity<Optional<File>>(service.singleFile(id), HttpStatus.OK);
-    //}
+    @PostMapping("/add")
+    public ResponseEntity<File> addnewFile(@RequestBody File file){
+        File newFile = service.addFile(file);
+        return new ResponseEntity<>(newFile, HttpStatus.CREATED);
+    }
+
 }
 
 // NOTES //
